@@ -748,6 +748,7 @@ namespace PCmasterCRM {
 		{
 			fb->Close();
 		}
+		
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		dataGridView1->Rows->Add(dataGridView1->Rows->GetRowCount(DataGridViewElementStates::Visible), "", "", "", "", "", "");
@@ -801,8 +802,15 @@ namespace PCmasterCRM {
 		for each (DataGridViewRow ^ row in dataGridView1->Rows) { row->Cells[0]->Value = i; i++; }
 	}
 	private: System::Void ðåäàãóâàòèToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		Edit^ f = gcnew Edit(dataGridView1, dataGridView1->CurrentRow->Index);
-		f->ShowDialog();
+		if (dataGridView1->CurrentRow != nullptr)
+		{
+			Edit^ f = gcnew Edit(dataGridView1, dataGridView1->CurrentRow->Index);
+			f->ShowDialog();
+		}
+		else {
+			MessageBox::Show("Ùîñü ï³øëî íå òàê! Âèáåð³òü êîì³ðêó!");
+		}
+		
 	}
 	private: System::Void çíèùèòèÄàí³ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		dataGridView1->Rows->Clear();
